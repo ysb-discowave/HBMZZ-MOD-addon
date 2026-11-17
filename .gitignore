@@ -1,0 +1,21 @@
+.gradle/
+.gradle-home/
+build/
+run/
+tmp/
+*.log
+build_log*.txt
+
+# 构建产物：二进制走 GitHub Releases，不进仓库
+release/
+dist/
+
+# 检查脚本跑出来的字节码缓存
+__pycache__/
+*.pyc
+
+# 编辑器 / 工具产生的本地数据
+.workbuddy/
+.idea/
+*.iml
+.vscode/

@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "hbmzzaddon",
+    "name": "HBMZZ Addon",
+    "description": "Control panel content split out of HBMZZ: the addon node/control models, their textures and the control panel's solid/invisible GUI textures. Licensed under the PolyForm Shield License 1.0.0, separately from the root mod. Install alongside HBMZZ - this jar carries resources only and does nothing on its own.",
+    "version": "0.1.0",
+    "mcversion": "1.12.2",
+    "authorList": ["HBMZZ"],
+    "credits": "Content derived from NTM Cursed Addon by Leafia and movblock, used under the PolyForm Shield License 1.0.0. See NOTICE-hbmzz-addon.md and LICENSE-PolyForm.txt inside this jar.",
+    "logoFile": "",
+    "url": "",
+    "updateUrl": "",
+    "screenshots": [],
+    "dependencies": ["after:hbmzz"]
+  }
+]

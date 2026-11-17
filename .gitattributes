@@ -1,0 +1,7 @@
+# PolyForm 条款须逐字节原样再分发，禁止任何换行转换
+LICENSE-PolyForm.txt text eol=lf
+NOTICE-hbmzz-addon.md text eol=lf
+
+# 素材与模型必须是原样字节
+*.png binary
+*.ogg binary
