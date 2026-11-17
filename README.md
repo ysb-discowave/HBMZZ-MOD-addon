@@ -3,16 +3,26 @@
 `hbmzz:addon` —— 从 [HBMZZ](https://github.com/ysb-discowave/HBMZZ-MOD) 拆出的控制台/附属内容。
 
 这个 jar 是**根 mod 的附属包**，不能单独使用。它包含控制面板里那些来自 NTM Cursed Addon 的
-节点与控件资源（addon 模型、贴图、控件面板的 solid/invisible GUI 贴图），这些内容的许可证
-与根 mod 不同，因此单独放在一个仓库里声明、单独发一个 jar。
+仪器内容（addon 控件、节点的模型与贴图，以及控件面板的 solid/invisible GUI 贴图），这些内容的
+许可证与根 mod 不同，因此单独放在一个仓库里声明、单独发一个 jar。
+
+两边的分工：
+
+| | 提供什么 | 许可 |
+|---|---|---|
+| 根 mod `hbmzz` | `com.hbmzz.cecp` 控制台框架（控件基类、节点系统、编辑器界面、方块与方块实体）、基础控件的模型与贴图 | GPL-3.0-only |
+| 本包 `hbmzzaddon` | 仪器控件（11 个控件、7 个配置面板、节点）与它们的素材 | PolyForm Shield 1.0.0 |
+
+`cecp` 是从「NTM: 诅咒版」移植的 GPL-3.0 代码，**留在根 mod**，本包不带它。
 
 **装法：两个 jar 都要装。** 把 `hbmzz-<版本>.jar` 和 `hbmzz-addon-<版本>.jar` 一起放进 `mods/`
-目录。只装 addon 不会有效果（它没有方块、没有物品）；只装根 mod 则 addon 那几个控件会缺模型。
+目录。只装 addon 不会有效果（框架在根 mod 里，没有它这些仪器无处安放）；只装根 mod 则仪器控件缺失。
 
 ## 依赖关系
 
 - modid：`hbmzzaddon`
-- 对根 mod 是**软依赖**：`after:hbmzz`（若根 mod 存在则在后加载），**不是** `required-after`。
+- **依赖方向：本包需要根 mod 在场。** 对根 mod 是软依赖：`after:hbmzz`（若根 mod 存在则在后加载），
+  不是 `required-after`——缺根 mod 时本包仍能加载，但它的资源没有任何东西去引用。
   反过来根 mod 不依赖本包，可以单独安装。
 - 需要 Minecraft 1.12.2 + Forge（`1.12.2-14.23.5.2847`）。
 - 资源域沿用 `assets/hbmzz/`，**不是** `assets/hbmzzaddon/`：注册名与贴图路径必须和拆分前一致，
@@ -46,7 +56,7 @@ export JAVA_HOME="<jdk8>"
 
 ```
 build.gradle                      ForgeGradle 2.3 / 1.12.2-14.23.5.2847
-src/main/java/com/hbmzz/addon/    仅一个 @Mod 入口（本包目前只带资源）
+src/main/java/com/hbmzz/addon/    仅一个 @Mod 入口（当前阶段只带资源，控件代码尚未迁入）
 src/main/resources/mcmod.info     modid hbmzzaddon，after:hbmzz
 src/main/resources/assets/hbmzz/  models/control_panel/addon/**、
                                   textures/models/control_panel/addon/**、
