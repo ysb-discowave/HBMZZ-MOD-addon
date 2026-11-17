@@ -6,6 +6,9 @@ tmp/
 *.log
 build_log*.txt
 
+# 本地编译依赖：本体编译产物（hbmzz-core.jar）的副本，只给 compileOnly 用，不进仓库
+libs/
+
 # 构建产物：二进制走 GitHub Releases，不进仓库
 release/
 dist/

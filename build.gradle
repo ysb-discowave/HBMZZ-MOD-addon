@@ -31,6 +31,19 @@ repositories {
     mavenCentral()
 }
 
+// ---------------------------------------------------------------- 编译依赖：本体 jar
+// addon 的控件要继承本体的 cecp 框架（Control / ControlType / ControlPanel …），
+// 而这些类属于 GPL-3.0 的本体，不进这个仓库，所以只能拿本体编译好的 jar 当**只读**的
+// 编译期依赖：
+//
+//   libs/hbmzz-core.jar  ← 本体 build/libs/hbmzz-<版本>.jar 的副本
+//
+// compileOnly 意味着它**不参与运行时、不会打进本 jar**——玩家侧靠 mods/ 里那两个 jar 共存，
+// 而不是靠这里把本体复制一份。libs/ 在 .gitignore 里，本体 jar 不进仓库。
+dependencies {
+    compileOnly files('libs/hbmzz-core.jar')
+}
+
 jar {
     // ForgeGradle leaves its dev-only annotation caches in the classes dir;
     // they have no business in a shipped jar.

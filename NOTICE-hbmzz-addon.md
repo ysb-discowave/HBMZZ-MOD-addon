@@ -44,14 +44,22 @@ Required Notice: Copyright 2025-2026 movblock <admin@movblock.mov> (https://gith
 
 ## 4. 覆盖范围
 
-本仓库当前只含资源，逐个目录的来源：
+本仓库含资源与仪器控件代码，逐个目录的来源：
 
 | 路径 | 内容 | 归属 |
 |---|---|---|
 | `src/main/resources/assets/hbmzz/models/control_panel/addon/**` | 6 个 `.obj`（`lever`、`meter_vertical`、`nixie`、`starboundbuttonlol`、`starboundswitchlol`、`textindicator`） | 上游 Cursed Addon → PolyForm Shield 1.0.0 |
 | `src/main/resources/assets/hbmzz/textures/models/control_panel/addon/**` | 16 张 `.png` | 同上 |
 | `src/main/resources/assets/hbmzz/textures/gui/control_panel/{solid,solid_emissive,invisible}.png` | 3 张 GUI 贴图 | 同上 |
+| `src/main/java/com/hbmzz/cecp/controls/addon/**` | 13 个控件类：`AddonControlType`、`Drawing`、`Graph`、`LargeButton`、`LargeSwitch`、`LeverBase`、`LeverHorizontal`、`LeverVertical`、`MeterHorizontal`、`MeterVertical`、`NixieDisplay`、`RBMKDisplay`、`TextIndicator` | 上游 Cursed Addon → 同上 |
+| `src/main/java/com/hbmzz/cecp/controls/configs/addon/**` | 7 个配置面板类：`SubElementDrawing`、`SubElementGraph`、`SubElementMeterHorizontal`、`SubElementMeterVertical`、`SubElementNixie`、`SubElementRBMKDisplay`、`SubElementTextIndicator` | 同上 |
+| `src/main/java/com/hbmzz/cecp/compat/{AddonRes,ModSounds}.java` | 仪器素材的路径与音效表 | 同上 |
 | `src/main/java/com/hbmzz/addon/**`、`build.gradle`、`mcmod.info`、`README.md`、本文件 | 本仓库自己的脚手架与说明 | HBMZZ 项目自有，随本仓库按同一许可提供 |
+
+`TerminalControl` 与 `com.hbmzz.cecp` 的框架部分（`Control`、`Node`、`ControlRegistry`、`types/*` 等）
+**不在本仓库**：它们是从「NTM: 诅咒版」移植的 GPL-3.0 代码，留在根 mod。
+
+## 5. 未包含的路径（刻意不复制）
 
 基础控件（非 `addon/` 子目录）的 OBJ 与贴图来自 **NTM-CE，GPL-3.0**，与 `textures/gui/control_panel/`
 其余 11 张贴图一样，**不在本仓库内、也不属于本仓库的授权范围**——它们是根 mod `hbmzz` 的一部分，
@@ -69,9 +77,8 @@ Required Notice: Copyright 2025-2026 movblock <admin@movblock.mov> (https://gith
 | `assets/hbmzz/models/control_panel/*.obj`（非 `addon/`） | 13 | NTM-CE，GPL-3.0 |
 | `assets/hbmzz/textures/models/control_panel/*.png`（非 `addon/`） | 22 | NTM-CE，GPL-3.0 |
 | `assets/hbmzz/textures/gui/control_panel/` 其余贴图 | 11 | 见根仓库 `NOTICE.md` |
-若你在这份副本里看到这些文件，说明这份快照的拆分尚未落地，见根仓库 `NOTICE.md`。
 
-## 5. 与根 mod 的关系
+## 6. 与根 mod 的关系
 
 - `hbmzz:addon`（modid `hbmzzaddon`）对 `hbmzz` 是**软依赖**：`after:hbmzz`，即"若存在则后加载"，
   不是 `required-after`。缺少根 mod 时本 jar 仍可加载，但它的资源没有任何东西去引用。
